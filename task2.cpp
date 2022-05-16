@@ -2,10 +2,12 @@
 #include <map>
 #include <string>
 
+//Возможно, я неверно понял задание, но на мой взгляд здесь был бы уместней multiset
+
 int main() {
     std::multimap<std::string, int> queue;
     std::multimap<std::string, int>::iterator it;
-    int counter = 1, pointer = 0;
+    int counter = 1;
     std::string input;
 
     while (true) {
