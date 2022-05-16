@@ -2,12 +2,9 @@
 #include <map>
 #include <string>
 
-//Возможно, я неверно понял задание, но на мой взгляд здесь был бы уместней multiset
-
 int main() {
-    std::multimap<std::string, int> queue;
-    std::multimap<std::string, int>::iterator it;
-    int counter = 1;
+    std::map<std::string, int> queue;
+    std::map<std::string, int>::iterator it;
     std::string input;
 
     while (true) {
@@ -22,14 +19,20 @@ int main() {
                 std::cout << "Queue is empty" << std::endl;
                 continue;
             }
+
             it = queue.begin();
             std::cout << it->first << std::endl;
-            queue.erase(it);
+            it->second--;
+            if (it->second == 0)
+                queue.erase(it);
             continue;
         }
-
-        queue.insert(std::make_pair(input, counter));
-        counter++;
+        
+        if (queue.contains(input))
+            queue[input]++;
+        else {
+            queue.insert(std::make_pair(input, 1));
+        }
     }
 
     return 0;
