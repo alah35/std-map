@@ -58,6 +58,9 @@ int main() {
             continue;
         }
 
+        if (input == "q" || input == "quit")
+            break;
+
        if (is_request(input)) {
            if (input[0] >= '0' && input[0] <= '9')
                find_by_num(handbook, input);
